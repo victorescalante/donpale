@@ -1,0 +1,28 @@
+{
+  "name": "tienda",
+  "version": "1.0.0",
+  "description": "Primer punto de venta experimental.",
+  "author": "Victor Escalante",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "el-table-pagination": "^0.5.0",
+    "element-ui": "^2.4.11",
+    "firebase": "^7.12.0",
+    "firesql": "^2.0.2",
+    "lodash": "^4.17.15",
+    "nuxt": "^2.0.0",
+    "vue-filter": "^0.2.5",
+    "vue2-datatable-component": "^2.3.1",
+    "vuefire": "^2.2.1"
+  },
+  "devDependencies": {}
+}
