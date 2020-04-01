@@ -1,6 +1,11 @@
 <template>
-  <div>
+  <div v-loading.fullscreen.lock="findActive">
     <el-row :gutter="24">
+      <el-col :span="2">
+        <nuxt-link to="/">
+          <el-button type="primary" icon="el-icon-s-home"></el-button>
+        </nuxt-link>
+      </el-col>
       <el-col :span="10" class="search_box">
         <form v-on:submit="onSubmit">
           <el-row>
@@ -13,10 +18,10 @@
         </form>
       </el-col>
       <el-col :span="8" style="padding: 0px 10px">
-        <el-button type="primary" @click.stop="findProductsByName()">Buscar</el-button>
+        <el-button type="primary" @click.stop="findProductsByName()" icon="el-icon-search">Buscar</el-button>
         <el-button type="secondary" @click="clearSearch()" v-if="search.length > 0">Limpiar Busqueda</el-button>
       </el-col>
-      <el-col :span="6" style="text-align: right">
+      <el-col :span="4" style="text-align: right">
         <el-button type="success" @click.stop="finishSale()" v-if="this.productsInSale.length > 0">Realizar cobro</el-button>
       </el-col>
     </el-row>
@@ -204,14 +209,10 @@
 </template>
 
 <script>
-  import Logo from '~/components/Logo.vue'
   import firebase from 'firebase/app'
   import 'firebase/firestore'
-  import { FireSQL } from 'firesql';
-  import * as _ from "lodash";
 
   let instance_firebase = null;
-  console.log("firebase.apps.length", firebase.apps.length)
   if (!firebase.apps.length){
     instance_firebase = firebase.initializeApp({
       apiKey: 'AIzaSyDTiguxvO7DDnGNc93aRKPnbHNAqr5xp2w',
@@ -240,9 +241,6 @@
 
  export default {
     name: 'ok',
-    components: {
-      Logo
-    },
     data: () => ({
       search: "",
       sale_products: [],
@@ -256,7 +254,8 @@
       dialogVisible: false,
       dialogVisibleExit: false,
       client_payment: "",
-      inputIsVisible: false
+      inputIsVisible: false,
+      findActive: false
     }),
 
     mounted() {
@@ -421,13 +420,13 @@
       },
 
       async findProductBySKU() {
-        console.log("Valor a buscar", this.search.toUpperCase());
         /**
          *  The variable is initialize with empty value.
          * */
         this.products_find_sku = [];
 
         if (this.search.length >= 4) {
+          this.findActive = true;
           await db.collection('products')
             .where('sku', "==", this.search.toUpperCase())
             .get()
@@ -443,6 +442,7 @@
                   'sku': this.search.toUpperCase()
                 });
                 this.search = "";
+                this.findActive = false;
                 this.$notify({
                   title: 'No existe producto',
                   message: 'El producto no se encuentra registrado',
@@ -453,7 +453,6 @@
               /** Add new element in sale **/
 
               if (this.products_find_sku.length === 1) {
-                console.log('product_firestore', this.products_find_sku[0]);
                 this.addProductToSale(
                   this.products_find_sku[0].name,
                   this.products_find_sku[0].price,
@@ -463,26 +462,30 @@
                 this.products_find_name = [];
                 this.products_find_sku = [];
                 this.search = '';
+                this.findActive = false;
                 this.focusSearch();
               }
             });
+
+          this.findActive = false;
         }
       },
 
       onSubmit(event){
         event.stopPropagation();
         event.preventDefault();
-        if (this.search.length >= 4){
+        if (this.search.length >= 2){
           this.findProductBySKU();
         }else{
-          this.$message.error('Agrega al menos 4 carácteres para realizar la busqueda.');
+          this.$message.error('Agrega al menos 2 carácteres para realizar la busqueda.');
         }
       },
 
 
       async findProductsByName() {
 
-        if (this.search.length >= 4) {
+        if (this.search.length >= 2) {
+          this.findActive = true;
           await db.collection('products')
             .where('sku', "==", this.search)
             .get()
@@ -498,9 +501,11 @@
               this.products_find_name_all = querySnapshot.docs.map(doc => doc.data())
             });
 
+          this.findActive = false;
+
         }else{
 
-          this.$message.error('Agrega al menos 4 carácteres para realizar la busqueda.');
+          this.$message.error('Agrega al menos 2 carácteres para realizar la busqueda.');
 
         }
 
