@@ -91,7 +91,6 @@
         </div>
       </el-col>
     </el-row>
-
     <el-dialog
       title="Busqueda de productos"
       :visible.sync="dialogVisible"
@@ -133,7 +132,6 @@
         </el-table>
       </div>
     </el-dialog>
-
     <el-dialog
       title="Resumen de venta"
       :visible.sync="dialogVisibleExit"
@@ -149,7 +147,7 @@
             <h3>Cambio</h3>
             <div class="total_box" style="background: lightseagreen">$ {{ client_payment - sumSale }}</div>
           </el-col>
-          <el-col :span="7" :offset="2">
+          <el-col :span="9" :offset="1">
             <div class="calculator-general">
               <h3>Ingresa cantidad</h3>
               <el-row class="calculator-buttons">
@@ -192,8 +190,8 @@
               </el-row>
             </div>
           </el-col>
-          <el-col :span="7" :offset="2">
-            <div class="finished-sale">
+          <el-col :span="8" :offset="1">
+            <div class="finished-sale" v-if="(client_payment - sumSale) >= 0">
               <p>Número de cliente</p>
               <el-input v-model="form.client_id"></el-input>
               <div class="button">
@@ -201,11 +199,18 @@
               </div>
             </div>
 
+            <div v-else>
+              <div class="message-alert-sale">
+                <p>Agrega una cantidad correcta</p>
+              </div>
+            </div>
+
           </el-col>
         </el-row>
       </div>
     </el-dialog>
-
+    <div class="status-network" v-if="isOffline">Offline</div>
+    <div class="status-network success" v-else>En line</div>
   </div>
 
 
@@ -269,6 +274,21 @@
     },
 
     computed: {
+
+      isOffline(){
+
+        if (this.$nuxt.isOffline){
+          firebase.firestore().disableNetwork().then(function () {
+            console.log("Sin internet");
+          })
+        }else{
+          firebase.firestore().enableNetwork().then(function () {
+            console.log("Con internet");
+          })
+        }
+
+        return this.$nuxt.isOffline
+      },
 
       clientPaymentToInt(){
 
@@ -348,46 +368,6 @@
           this.focusSearch();
       },
 
-      testQuery(){
-
-        let data = {};
-        let products = [];
-
-        //First you get users data
-        let document = db.collection("sales");
-
-        document.get().then((snapshot) => {
-
-            //In this case I will store data in some object, so I can add events as an array for a key in each user object
-
-            snapshot.forEach((sale) => {
-              let current_sale = sale.data();
-              console.log('current_sale', sale.data());
-              for (let i=0; i < current_sale.products.length; i++ ){
-                console.log('current_sale.products['+i+']._product ', current_sale.products[i].sku);
-                if (!products.find(element => element === current_sale.products[i].sku)){
-                  products.push({
-                    'sku': current_sale.products[i].sku,
-                    'count': current_sale.products[i].units
-                  });
-                }
-              }
-
-              /** Valid data persist **/
-              let source = snapshot.metadata.fromCache ? "local cache" : "server";
-              console.log("Data came from " + source);
-
-
-            });
-
-          // Seguir aqui
-
-        });
-
-        // console.log(data);
-
-      },
-
       async successSale() {
         let object_products = this.productsInSale;
         console.log('object_products', object_products);
@@ -403,6 +383,7 @@
 
         let sale = {
           'products': products,
+          'client_id': this.form.client_id,
           'created_at': firebase.firestore.Timestamp.fromDate(new Date(Date.now())),
           'total': this.sumSale
         };
@@ -593,8 +574,7 @@
 
   .products_detail {
     font-weight: bold;
-    text-align: center;
-    padding: 15px;
+    padding: 5px;
   }
   .products_table{
     padding: 15px 0px;
@@ -660,5 +640,30 @@
 
   .my_keyboard_two span{
     text-transform: uppercase;
+  }
+
+  .message-alert-sale{
+    padding: 15px;
+    text-align: center;
+  }
+
+  .message-alert-sale p{
+    font-size: 18px;
+    color: dodgerblue;
+  }
+
+  .status-network{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: red;
+    border-radius: 10px;
+    padding: 0px 15px;
+    color: white;
+    font-size: 10px;
+  }
+
+  .status-network.success{
+    background: limegreen;
   }
 </style>
