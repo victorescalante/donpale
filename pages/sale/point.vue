@@ -141,7 +141,7 @@
       :before-close="handleClose">
       <div>
         <el-row>
-          <el-col :span="5" :offset="5">
+          <el-col :span="5">
             <h3>Total de Compra</h3>
             <div class="total_box">$ {{ sumSale }}</div>
             <h3>Pago del Cliente</h3>
@@ -192,12 +192,15 @@
               </el-row>
             </div>
           </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="24">
-            <div class="button_success_sale">
-              <el-button @click="successSale()" type="success">Terminar venta</el-button>
+          <el-col :span="7" :offset="2">
+            <div class="finished-sale">
+              <p>Número de cliente</p>
+              <el-input v-model="form.client_id"></el-input>
+              <div class="button">
+                <el-button @click="successSale()" type="success">Terminar venta</el-button>
+              </div>
             </div>
+
           </el-col>
         </el-row>
       </div>
@@ -255,7 +258,10 @@
       dialogVisibleExit: false,
       client_payment: "",
       inputIsVisible: false,
-      findActive: false
+      findActive: false,
+      form: {
+        client_id: ""
+      }
     }),
 
     mounted() {
@@ -577,6 +583,10 @@
     padding: 15px 5px;
   }
 
+  .calculator-buttons .buttonc button{
+    width: 100%;
+  }
+
   .calculator-general{
     padding: 15px;
   }
@@ -632,9 +642,16 @@
     text-align: center;
   }
 
-  .button_success_sale{
-    text-align: right;
-    padding: 15px 0px;
+  .finished-sale{
+    padding: 15px;
+  }
+
+  .finished-sale .button{
+    padding: 25px 0px;
+  }
+
+  .finished-sale .button button{
+    width: 100%;
   }
 
   .space-box{
