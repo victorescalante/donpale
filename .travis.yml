@@ -3,6 +3,7 @@ node_js:
   - "v10.15.0"
 script:
   - echo "Deploy"
+  - npm run generate
 install:
   - npm install -g firebase-tools
 after_success:
