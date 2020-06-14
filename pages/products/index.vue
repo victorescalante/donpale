@@ -20,59 +20,57 @@
       </div>
 
       <el-row :gutter="24">
-        <el-row class="space-box">
-          <el-col :span="24">
-            <div class="my_keyboard">
-              <div class="line_keyboard_0">
-                <el-button @click="addLetter('1')">1</el-button>
-                <el-button @click="addLetter('2')">2</el-button>
-                <el-button @click="addLetter('3')">3</el-button>
-                <el-button @click="addLetter('4')">4</el-button>
-                <el-button @click="addLetter('5')">5</el-button>
-                <el-button @click="addLetter('6')">6</el-button>
-                <el-button @click="addLetter('7')">7</el-button>
-                <el-button @click="addLetter('8')">8</el-button>
-                <el-button @click="addLetter('9')">9</el-button>
-                <el-button @click="addLetter('0')">0</el-button>
-              </div>
-              <div class="line_keyboard_a">
-                <el-button @click="addLetter('q')">q</el-button>
-                <el-button @click="addLetter('w')">w</el-button>
-                <el-button @click="addLetter('e')">e</el-button>
-                <el-button @click="addLetter('r')">r</el-button>
-                <el-button @click="addLetter('t')">t</el-button>
-                <el-button @click="addLetter('y')">y</el-button>
-                <el-button @click="addLetter('u')">u</el-button>
-                <el-button @click="addLetter('i')">i</el-button>
-                <el-button @click="addLetter('o')">o</el-button>
-                <el-button @click="addLetter('p')">p</el-button>
-              </div>
-              <div class="line_keyboard_b">
-                <el-button @click="addLetter('a')">a</el-button>
-                <el-button @click="addLetter('s')">s</el-button>
-                <el-button @click="addLetter('d')">d</el-button>
-                <el-button @click="addLetter('f')">f</el-button>
-                <el-button @click="addLetter('g')">g</el-button>
-                <el-button @click="addLetter('h')">h</el-button>
-                <el-button @click="addLetter('j')">j</el-button>
-                <el-button @click="addLetter('k')">k</el-button>
-                <el-button @click="addLetter('l')">l</el-button>
-                <el-button @click="addLetter('ñ')">ñ</el-button>
-              </div>
-              <div class="line_keyboard_c">
-                <el-button @click="addLetter('z')">z</el-button>
-                <el-button @click="addLetter('x')">x</el-button>
-                <el-button @click="addLetter('c')">c</el-button>
-                <el-button @click="addLetter('v')">v</el-button>
-                <el-button @click="addLetter('b')">b</el-button>
-                <el-button @click="addLetter('n')">n</el-button>
-                <el-button @click="addLetter('m')">m</el-button>
-                <el-button @click="addLetter(' ')" style="padding: 15px 50px">Espacio</el-button>
-                <el-button :disabled="search <= 0" type="danger" @click="clearSearch()">Limpiar</el-button>
-              </div>
+        <el-col :span="24" style="text-align: center">
+          <div class="my_keyboard_one">
+            <div class="line_keyboard_0_one">
+              <el-button @click="addLetter('1')">1</el-button>
+              <el-button @click="addLetter('2')">2</el-button>
+              <el-button @click="addLetter('3')">3</el-button>
+              <el-button @click="addLetter('4')">4</el-button>
+              <el-button @click="addLetter('5')">5</el-button>
+              <el-button @click="addLetter('6')">6</el-button>
+              <el-button @click="addLetter('7')">7</el-button>
+              <el-button @click="addLetter('8')">8</el-button>
+              <el-button @click="addLetter('9')">9</el-button>
+              <el-button @click="addLetter('0')">0</el-button>
             </div>
-          </el-col>
-        </el-row>
+            <div class="line_keyboard_a_one">
+              <el-button @click="addLetter('q')">q</el-button>
+              <el-button @click="addLetter('w')">w</el-button>
+              <el-button @click="addLetter('e')">e</el-button>
+              <el-button @click="addLetter('r')">r</el-button>
+              <el-button @click="addLetter('t')">t</el-button>
+              <el-button @click="addLetter('y')">y</el-button>
+              <el-button @click="addLetter('u')">u</el-button>
+              <el-button @click="addLetter('i')">i</el-button>
+              <el-button @click="addLetter('o')">o</el-button>
+              <el-button @click="addLetter('p')">p</el-button>
+            </div>
+            <div class="line_keyboard_b">
+              <el-button @click="addLetter('a')">a</el-button>
+              <el-button @click="addLetter('s')">s</el-button>
+              <el-button @click="addLetter('d')">d</el-button>
+              <el-button @click="addLetter('f')">f</el-button>
+              <el-button @click="addLetter('g')">g</el-button>
+              <el-button @click="addLetter('h')">h</el-button>
+              <el-button @click="addLetter('j')">j</el-button>
+              <el-button @click="addLetter('k')">k</el-button>
+              <el-button @click="addLetter('l')">l</el-button>
+              <el-button @click="addLetter('ñ')">ñ</el-button>
+            </div>
+            <div class="line_keyboard_c">
+              <el-button @click="addLetter('z')">z</el-button>
+              <el-button @click="addLetter('x')">x</el-button>
+              <el-button @click="addLetter('c')">c</el-button>
+              <el-button @click="addLetter('v')">v</el-button>
+              <el-button @click="addLetter('b')">b</el-button>
+              <el-button @click="addLetter('n')">n</el-button>
+              <el-button @click="addLetter('m')">m</el-button>
+              <el-button @click="addLetter(' ')" style="padding: 15px 50px">Espacio</el-button>
+              <el-button :disabled="search <= 0" type="danger" @click="clearSearch()">Limpiar</el-button>
+            </div>
+          </div>
+        </el-col>
       </el-row>
     </div>
 
@@ -130,7 +128,7 @@
               <el-input v-model="form.name"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="7">
             <el-form-item label="Costo (En cuanto fue comprado)" prop="cost">
               <el-input-number v-model="form.cost" :precision="1" :step="0.5" :min="0"></el-input-number>
             </el-form-item>
@@ -138,7 +136,26 @@
               <el-input-number v-model="form.price" :precision="1" :step="0.5" :min="0"></el-input-number>
             </el-form-item>
           </el-col>
-          <el-col :span="6">
+          <el-col :span="7">
+            <el-form-item label="Vendedor">
+              <el-select v-model="form.seller" placeholder="selecciona opción">
+                <el-option label="Coca-cola" value="coca"></el-option>
+                <el-option label="Coca-cola Jugos" value="coca-jugos"></el-option>
+                <el-option label="Bonafont" value="bonafont"></el-option>
+                <el-option label="Bimbo" value="bimbo"></el-option>
+                <el-option label="Central" value="central"></el-option>
+                <el-option label="Danone" value="danone"></el-option>
+                <el-option label="Marinela" value="marinela"></el-option>
+                <el-option label="Sabritas" value="sabritas"></el-option>
+                <el-option label="Barcel" value="barcel"></el-option>
+                <el-option label="Barcel Cacahuates" value="barcel-cacahuates"></el-option>
+                <el-option label="Deposito" value="deposito"></el-option>
+                <el-option label="Gamesa" value="gamesa"></el-option>
+                <el-option label="Ricolino" value="ricolino"></el-option>
+                <el-option label="Tecate" value="tecate"></el-option>
+                <el-option label="Pepsi" value="pepsi"></el-option>
+              </el-select>
+            </el-form-item>
             <div class="padding-top-15">
               <el-button type="primary" @click="submitForm('ruleForm')" v-if="product_id.length > 0">Actualizar Producto</el-button>
               <el-button type="primary" @click="submitForm('ruleForm')" v-if="product_id.length <= 0">Crear Producto</el-button>
@@ -162,7 +179,7 @@
                 <el-button @click="addLetterForm('8')">8</el-button>
                 <el-button @click="addLetterForm('9')">9</el-button>
                 <el-button @click="addLetterForm('0')">0</el-button>
-                <el-button :disabled="form.name <= 0" type="danger" @click="removeLetterForm()"> < Coreguir</el-button>
+                <el-button :disabled="form.name <= 0" type="danger" @click="removeLetterForm()"> < Corregir</el-button>
               </div>
               <div class="line_keyboard_a">
                 <el-button @click="addLetterForm('q')">q</el-button>
@@ -251,7 +268,7 @@
           cost: "",
           price: "",
           is_basic: false,
-          seller: "central"
+          seller: ""
         },
         rules: {
           name: [
@@ -262,6 +279,9 @@
           ],
           price: [
             { required: true, message: 'Agrega el costo del producto', trigger: 'blur'},
+          ],
+          seller: [
+            { required: true, message: 'Agrega un vendedor', trigger: 'blur'},
           ]
         }
       }
@@ -319,11 +339,12 @@
                     cost: "",
                     price: "",
                     is_basic: false,
-                    seller: "central"
+                    seller: ""
                 };
                 this.editVisible = false;
                 this.search = "";
                 this.activeLoading = false;
+                this.focusSearch();
               }.bind(this)).catch(function (error) {
                 this.$message.error('Error al guardar producto');
                 this.activeLoading = false;
@@ -338,11 +359,12 @@
                   cost: "",
                   price: "",
                   is_basic: false,
-                  seller: "central"
+                  seller: ""
                 };
                 this.editVisible = false;
                 this.search = "";
                 this.activeLoading = false;
+                this.focusSearch();
               }.bind(this)).catch(function (error) {
                 this.$message.error('Error al actualizar');
                 this.activeLoading = false;
@@ -419,7 +441,7 @@
         this.form.sku = product.sku;
         this.form.name = product.name;
         this.form.price = product.price;
-        this.form.seller = 'central';
+        this.form.seller = product.seller;
         this.form.is_basic = false;
 
       },
@@ -496,27 +518,27 @@
     border-radius: 5px;
   }
 
-  .line_keyboard_0{
+  .line_keyboard_0_one{
     margin-left: 0px;
   }
 
-  .my_keyboard .el-button{
+  .my_keyboard_one .el-button{
     margin: 10px;
   }
 
-  .my_keyboard.small_k .el-button{
+  .my_keyboard_one.small_k .el-button{
     margin: 5px;
   }
 
-  .line_keyboard_a{
+  .line_keyboard_a_one{
     margin-left: 10px;
   }
 
-  .line_keyboard_b{
+  .line_keyboard_b_one{
     margin-left: 15px;
   }
 
-  .line_keyboard_c{
+  .line_keyboard_c_one{
     margin-left: 20px;
   }
 

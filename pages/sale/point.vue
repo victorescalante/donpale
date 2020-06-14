@@ -28,7 +28,7 @@
     <el-row :gutter="24">
       <el-row class="space-box">
         <el-col :span="18">
-          <div class="my_keyboard">
+          <div class="my_keyboard_two">
             <div class="line_keyboard">
               <el-button @click="addLetter('q')">q</el-button>
               <el-button @click="addLetter('w')">w</el-button>
@@ -41,7 +41,7 @@
               <el-button @click="addLetter('o')">o</el-button>
               <el-button @click="addLetter('p')">p</el-button>
             </div>
-            <div class="line_keyboard_b">
+            <div class="line_keyboard_b_two">
               <el-button @click="addLetter('a')">a</el-button>
               <el-button @click="addLetter('s')">s</el-button>
               <el-button @click="addLetter('d')">d</el-button>
@@ -53,7 +53,7 @@
               <el-button @click="addLetter('l')">l</el-button>
               <el-button @click="addLetter('ñ')">ñ</el-button>
             </div>
-            <div class="line_keyboard_c">
+            <div class="line_keyboard_c_two">
               <el-button @click="addLetter('z')">z</el-button>
               <el-button @click="addLetter('x')">x</el-button>
               <el-button @click="addLetter('c')">c</el-button>
@@ -553,15 +553,15 @@
 
 <style>
 
-  .my_keyboard .el-button{
+  .my_keyboard_two .el-button{
     margin: 5px;
   }
 
-  .line_keyboard_b{
+  .line_keyboard_b_two{
     margin-left: 10px;
   }
 
-  .line_keyboard_c{
+  .line_keyboard_c_two{
     margin-left: 15px;
   }
 
@@ -641,7 +641,7 @@
     padding: 15px 15px;
   }
 
-  .my_keyboard span{
+  .my_keyboard_two span{
     text-transform: uppercase;
   }
 </style>
