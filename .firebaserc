@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "donpale"
+    "default": "donpale-a045c"
+  },
+  "targets": {
+    "donpale-a045c": {
+      "hosting": {
+        "Donpale": [
+          "donpale"
+        ]
+      }
+    }
   }
 }
