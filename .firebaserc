@@ -5,8 +5,11 @@
   "targets": {
     "donpale-a045c": {
       "hosting": {
-        "Donpale": [
+        "production": [
           "donpale"
+        ],
+        "staging": [
+          "donpale-a045c"
         ]
       }
     }
