@@ -11,4 +11,4 @@ install:
   - npm i -g firebase-tools
   - npm run generate
 after_success:
-  - firebase deploy --token "$FIREBASE_TOKEN"
+  - firebase deploy --only hosting:donpale --token "$FIREBASE_TOKEN"
