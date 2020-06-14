@@ -2,7 +2,7 @@
   <div>
     <div id="bg">
       <div class="text-bg">
-        <h1>Tienda Don Pale</h1>
+        <h1>Bienvenido a Tienda Don Pale</h1>
       </div>
       <el-row :gutter="24" class="aling-buttons">
         <el-col :span="8">
