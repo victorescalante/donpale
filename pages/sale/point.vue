@@ -210,7 +210,7 @@
       </div>
     </el-dialog>
     <div class="status-network" v-if="isOffline">Offline</div>
-    <div class="status-network success" v-else>En line</div>
+    <div class="status-network success" v-else>Online</div>
   </div>
 
 
