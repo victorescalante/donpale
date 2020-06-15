@@ -660,7 +660,7 @@
     border-radius: 10px;
     padding: 0px 15px;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .status-network.success{
