@@ -24,7 +24,7 @@
     "nuxt": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "recharts": "^1.8.5",
+    "recharts": "^2.1.14",
     "vue-filter": "^0.2.5",
     "vue-offline": "^2.0.8",
     "vue2-datatable-component": "^2.3.1",
